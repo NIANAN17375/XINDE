@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Livre et Feu | Know it then all.</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "on-error": "#690005",
+                    "tertiary-fixed-dim": "#c0c7d6",
+                    "tertiary-fixed": "#dce2f3",
+                    "on-primary-fixed-variant": "#454747",
+                    "on-surface-variant": "#c4c7c8",
+                    "surface-container-low": "#1b1b1b",
+                    "on-error-container": "#ffdad6",
+                    "tertiary-container": "#dce2f3",
+                    "on-secondary-fixed-variant": "#454747",
+                    "secondary": "#c6c6c6",
+                    "surface-dim": "#131313",
+                    "on-surface": "#e2e2e2",
+                    "surface-container-lowest": "#0e0e0e",
+                    "secondary-fixed-dim": "#c6c6c6",
+                    "surface-bright": "#393939",
+                    "on-primary-container": "#636565",
+                    "inverse-on-surface": "#303030",
+                    "background": "#131313",
+                    "error-container": "#93000a",
+                    "inverse-surface": "#e2e2e2",
+                    "on-tertiary-fixed-variant": "#404754",
+                    "on-secondary-fixed": "#1a1c1c",
+                    "surface": "#131313",
+                    "outline-variant": "#444748",
+                    "inverse-primary": "#5d5f5f",
+                    "surface-container-highest": "#353535",
+                    "on-tertiary-container": "#5e6572",
+                    "on-tertiary": "#2a313d",
+                    "error": "#ffb4ab",
+                    "on-background": "#e2e2e2",
+                    "primary": "#ffffff",
+                    "on-secondary-container": "#b5b5b5",
+                    "primary-fixed": "#e2e2e2",
+                    "secondary-container": "#454747",
+                    "secondary-fixed": "#e2e2e2",
+                    "primary-container": "#e2e2e2",
+                    "on-primary": "#2f3131",
+                    "surface-container": "#1f1f1f",
+                    "on-secondary": "#2f3131",
+                    "tertiary": "#ffffff",
+                    "on-primary-fixed": "#1a1c1c",
+                    "outline": "#8e9192",
+                    "on-tertiary-fixed": "#151c27",
+                    "surface-container-high": "#2a2a2a",
+                    "primary-fixed-dim": "#c6c6c7",
+                    "surface-tint": "#c6c6c7",
+                    "surface-variant": "#353535"
+            },
+            "spacing": {
+                    "base": "4px",
+                    "gutter": "24px",
+                    "xl": "48px",
+                    "sm": "8px",
+                    "md": "16px",
+                    "xs": "4px",
+                    "margin-mobile": "16px",
+                    "lg": "24px",
+                    "margin-desktop": "64px"
+            },
+            "fontFamily": {
+                    "label-sm": ["Inter"],
+                    "display-xl": ["Inter"],
+                    "headline-md": ["Inter"],
+                    "body-md": ["Inter"],
+                    "headline-lg": ["Inter"],
+                    "display-xl-mobile": ["Inter"],
+                    "body-lg": ["Inter"],
+                    "bilingual-subtext": ["Inter"]
+            },
+            "fontSize": {
+                    "label-sm": ["12px", {"lineHeight": "1", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                    "display-xl": ["64px", {"lineHeight": "1.1", "letterSpacing": "-0.04em", "fontWeight": "600"}],
+                    "headline-md": ["24px", {"lineHeight": "1.3", "fontWeight": "500"}],
+                    "body-md": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                    "headline-lg": ["32px", {"lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "500"}],
+                    "display-xl-mobile": ["40px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "600"}],
+                    "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                    "bilingual-subtext": ["14px", {"lineHeight": "1.5", "fontWeight": "400"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        body {
+            background-color: #000000;
+            color: #ffffff;
+            margin: 0;
+            overflow-x: hidden;
+            font-family: 'Inter', sans-serif;
+        }
+
+        .reveal {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .grid-background {
+            background-image: 
+                linear-gradient(to right, rgba(255, 255, 255, 0.05) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+            background-size: 80px 80px;
+        }
+
+        .vertical-grid-line {
+            width: 1px;
+            background-color: #1a1a1a;
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            z-index: 1;
+        }
+
+        .glass-panel {
+            background: rgba(0, 0, 0, 0.4);
+            backdrop-filter: blur(12px);
+        }
+
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24;
+            vertical-align: middle;
+        }
+    </style>
+</head>
+<body class="bg-background selection:bg-primary selection:text-on-primary">
+<!-- TOP NAVIGATION -->
+<nav class="flex justify-between items-center w-full px-margin-desktop py-md fixed top-0 z-50 bg-background/80 backdrop-blur-md border-b border-outline-variant">
+<div class="font-display-xl text-headline-md tracking-tighter text-primary font-extrabold uppercase">Livre et Feu</div>
+<div class="hidden md:flex gap-lg items-center">
+<a class="font-label-sm text-label-sm uppercase tracking-widest text-on-surface-variant hover:text-primary transition-colors" href="#">Philosophy 哲学</a>
+<a class="font-label-sm text-label-sm uppercase tracking-widest text-on-surface-variant hover:text-primary transition-colors" href="#">Approach 方法</a>
+<a class="font-label-sm text-label-sm uppercase tracking-widest text-on-surface-variant hover:text-primary transition-colors" href="#">Services 服务</a>
+<a class="font-label-sm text-label-sm uppercase tracking-widest text-on-surface-variant hover:text-primary transition-colors" href="#">Contact 联系</a>
+<button class="bg-primary text-on-primary px-lg py-sm font-label-sm text-label-sm tracking-widest hover:bg-secondary-fixed transition-all active:scale-95 ml-md">INQUIRE NOW</button>
+</div>
+<button class="md:hidden text-primary">
+<span class="material-symbols-outlined">menu</span>
+</button>
+</nav>
+<!-- HERO SECTION -->
+<header class="relative h-screen w-full overflow-hidden flex items-center justify-center">
+<!-- Moon Animation Background -->
+<div class="absolute inset-0 w-full h-full bg-transparent">
+<script src="https://ajax.googleapis.com/ajax/libs/threejs/r125/three.min.js"></script>
+<div id="threejs-container-ANIMATION_MOON" style="width:100%;height:100%"></div>
+<script>
+(function() {
+  const container = document.getElementById('threejs-container-ANIMATION_MOON');
+  if (!container) return;
+  
+  const width = container.clientWidth || window.innerWidth;
+  const height = container.clientHeight || window.innerHeight;
+
+  const scene = new THREE.Scene();
+  const camera = new THREE.PerspectiveCamera(75, width / height, 0.1, 1000);
+  camera.position.z = 60;
+
+  const renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
+  renderer.setSize(width, height);
+  renderer.setPixelRatio(window.devicePixelRatio || 1);
+  container.appendChild(renderer.domElement);
+
+  // Lighting
+  const ambientLight = new THREE.AmbientLight(0xffffff, 0.2);
+  scene.add(ambientLight);
+  
+  const directionalLight = new THREE.DirectionalLight(0xffffff, 1.2);
+  directionalLight.position.set(50, 20, 50);
+  scene.add(directionalLight);
+
+  // Moon Geometry
+  const moonGroup = new THREE.Group();
+  const moonGeo = new THREE.SphereGeometry(18, 64, 64);
+  
+  // Procedural Moon Texture/Material
+  const moonMaterial = new THREE.MeshPhongMaterial({
+    color: 0xeeeeee,
+    specular: 0x111111,
+    shininess: 5,
+    bumpScale: 0.15,
+    transparent: true,
+    opacity: 0.95
+  });
+  
+  const moon = new THREE.Mesh(moonGeo, moonMaterial);
+  moonGroup.add(moon);
+  scene.add(moonGroup);
+
+  // Particles (Slower Starfield)
+  const particlesCount = 2000;
+  const posArray = new Float32Array(particlesCount * 3);
+  for(let i = 0; i < particlesCount * 3; i++) {
+    posArray[i] = (Math.random() - 0.5) * 250;
+  }
+  const particlesGeo = new THREE.BufferGeometry();
+  particlesGeo.setAttribute('position', new THREE.BufferAttribute(posArray, 3));
+  const particlesMaterial = new THREE.PointsMaterial({
+    size: 0.12,
+    color: 0xffffff,
+    transparent: true,
+    opacity: 0.4,
+    blending: THREE.AdditiveBlending
+  });
+  const particlesMesh = new THREE.Points(particlesGeo, particlesMaterial);
+  scene.add(particlesMesh);
+
+  // Mouse Interaction
+  let mouseX = 0;
+  let mouseY = 0;
+  window.addEventListener('mousemove', (event) => {
+    mouseX = (event.clientX - window.innerWidth / 2) * 0.02;
+    mouseY = (event.clientY - window.innerHeight / 2) * 0.02;
+  });
+
+  // Animation Loop
+  const animate = () => {
+    requestAnimationFrame(animate);
+
+    // Slower Moon rotation
+    moon.rotation.y += 0.0005;
+    
+    // Starfield rotation (Very slow)
+    particlesMesh.rotation.y += 0.00015;
+    particlesMesh.rotation.x += 0.00008;
+
+    // Smooth camera drift
+    camera.position.x += (mouseX - camera.position.x) * 0.01;
+    camera.position.y += (-mouseY - camera.position.y) * 0.01;
+    camera.lookAt(scene.position);
+
+    renderer.render(scene, camera);
+  };
+
+  animate();
+
+  window.addEventListener('resize', () => {
+    const w = container.clientWidth || window.innerWidth;
+    const h = container.clientHeight || window.innerHeight;
+    camera.aspect = w / h;
+    camera.updateProjectionMatrix();
+    renderer.setSize(w, h);
+  });
+
+})();
+</script>
+</div>
+<!-- Scrim Grid Overlay -->
+<div class="absolute inset-0 grid-background opacity-40 pointer-events-none"></div>
+<!-- Hero Content -->
+<div class="relative z-10 w-full max-w-7xl px-margin-mobile md:px-margin-desktop reveal active">
+<div class="glass-panel p-xl border border-outline-variant max-w-3xl">
+<span class="font-label-sm text-label-sm tracking-[0.3em] text-primary mb-md block">INNOVATION THEN X VISION / 创新 X 愿景</span>
+<h1 class="font-display-xl text-display-xl-mobile md:text-display-xl mb-md">
+                    Know it then all.<br/>
+<span class="opacity-80">洞悉一切</span>
+</h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant mb-xl max-w-xl leading-relaxed">
+                    Pioneering then ideas for minds that then create, build, and inspire. / 启迪思想，为创造、构建与激发而生
+                </p>
+<div class="flex flex-col sm:flex-row gap-lg items-start sm:items-center">
+<button class="bg-primary text-on-primary px-xl py-md font-label-sm text-label-sm tracking-widest flex items-center gap-sm group hover:bg-on-surface transition-all">
+                        INQUIRE NOW / 立即咨询
+                        <span class="material-symbols-outlined transition-transform group-hover:translate-x-1">mail</span>
+<span class="material-symbols-outlined transition-transform group-hover:translate-x-1">arrow_forward</span>
+</button>
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm opacity-50 uppercase tracking-tighter">Choose your space</span>
+<span class="font-bilingual-subtext text-bilingual-subtext">选择你的空间</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Bottom Status Bar -->
+<div class="absolute bottom-md left-margin-desktop right-margin-desktop hidden md:flex justify-between items-end z-10 border-t border-outline-variant/30 pt-sm">
+<div class="font-label-sm text-[10px] tracking-widest text-outline">EST. MMXXIV / PARIS &amp; SHANGHAI</div>
+<div class="font-label-sm text-[10px] tracking-widest text-outline flex items-center gap-sm">
+<span class="w-1.5 h-1.5 bg-primary rounded-full animate-pulse"></span> SYSTEM ACTIVE
+            </div>
+</div>
+</header>
+<!-- EDITORIAL SECTION: PHILOSOPHY -->
+<section class="relative py-xl bg-background border-t border-outline-variant">
+<!-- Subtle Vertical Grid Lines -->
+<div class="vertical-grid-line left-[33.33%] hidden lg:block"></div>
+<div class="vertical-grid-line left-[66.66%] hidden lg:block"></div>
+<div class="max-w-[1440px] mx-auto px-margin-desktop grid grid-cols-1 lg:grid-cols-3 gap-xl">
+<!-- Col 1: Header -->
+<div class="reveal">
+<h2 class="font-headline-lg text-headline-lg mb-sm">Philosophy</h2>
+<h3 class="font-headline-md text-headline-md text-on-surface-variant mb-lg">哲学思想</h3>
+<p class="font-body-md text-body-md text-outline leading-relaxed">
+                    At the intersection of logic and intuition, we discover the architecture of tomorrow. Livre et Feu represents the equilibrium between the structure of a book (Livre) and the energy of fire (Feu).
+                </p>
+<p class="font-body-md text-body-md text-outline mt-md">
+                    在逻辑与直觉的交汇处，我们发现了未来的架构。Livre et Feu 代表了书籍（Livre）的结构与火焰（Feu）的能量之间的平衡。
+                </p>
+</div>
+<!-- Col 2: Visual 1 -->
+<div class="reveal" style="transition-delay: 200ms;">
+<div class="aspect-[4/5] border border-outline-variant relative overflow-hidden group">
+<img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" data-alt="A macro photograph of an architectural model made of translucent crystalline glass and black obsidian. The lighting is dramatic and high-contrast, echoing a cinematic editorial style. The mood is intellectual, avant-garde, and pristine, fitting the Livre et Feu visionary brand identity. Deep blacks and cold white highlights dominate the color palette." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCMSm5pUQTcer3VkAjTwVsjRC5NDHhIFGTqWOlsn4zz8jevqft2ekHo_ZTCQ1QDxo_n8tFuqqDwQFGmoottip5FK4qaxcv_IUuGB7mErq_CEd5t_4jyzqtA-FYIQnWx0LX280KIKDMxf1CCcp63jDl3poDjpljPT8wbsg5qFJigFzKMa5epwNnKOEWvbTbsYHE6AohWYq2PAzZbmrz3F2zAd4JCVWqGehhyk3iHifXS4ccx6hK2edzZ"/>
+<div class="absolute inset-0 bg-gradient-to-t from-background/80 to-transparent p-lg flex flex-col justify-end">
+<span class="font-label-sm text-label-sm tracking-widest mb-xs">STRUCTURE / 结构</span>
+<p class="font-bilingual-subtext text-bilingual-subtext opacity-70 italic">Formalizing the intangible.</p>
+</div>
+</div>
+</div>
+<!-- Col 3: Visual 2 -->
+<div class="reveal" style="transition-delay: 400ms;">
+<div class="aspect-[4/5] border border-outline-variant relative overflow-hidden group">
+<img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" data-alt="An abstract visualization of kinetic energy, appearing as glowing white fluid threads weaving through a dark void. The aesthetic is clean, technical, and high-end, inspired by contemporary digital art installations. The composition is asymmetrical and dynamic, representing the 'Fire' or energy aspect of the brand. Minimalist lighting and a high-contrast dark-mode palette." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBXXw707jb6Sox-r_zpfMMfJEdH9Gur_t8kD3V26UzFWSR6A2yT9XQvGlgweHwBxO3LCyrG8SanLjb1riQ7H4K1yHb-hGYSCaKDw33ybFhOsB7Lb7k19Qg1bOfreSm5WYmsGJpN_ZEl_oL64RGHSp5q6RydHRbjPDSMkFyu5DjN0i10SCzxLvLvo6g__35rUbg_eA7ERrQ2MqM30Va9ykkYt4aWeA1SiQfIZbiJqU-klfZ5E0e7G5K5"/>
+<div class="absolute inset-0 bg-gradient-to-t from-background/80 to-transparent p-lg flex flex-col justify-end">
+<span class="font-label-sm text-label-sm tracking-widest mb-xs">ENERGY / 能量</span>
+<p class="font-bilingual-subtext text-bilingual-subtext opacity-70 italic">Fueling the evolution.</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- CASE STUDIES: BENTO GRID -->
+<section class="py-xl bg-surface-container-lowest relative">
+<div class="px-margin-desktop mb-xl reveal">
+<h2 class="font-headline-lg text-headline-lg mb-xs">Selected Works / 精选案例</h2>
+<div class="w-12 h-0.5 bg-primary"></div>
+</div>
+<div class="max-w-[1440px] mx-auto px-margin-desktop grid grid-cols-1 md:grid-cols-4 gap-md md:grid-rows-2 h-auto md:h-[800px]">
+<!-- Large Feature -->
+<div class="md:col-span-2 md:row-span-2 reveal border border-outline-variant relative group overflow-hidden">
+<img class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-1000" data-alt="A minimalist architectural interior with wide concrete surfaces and sharp geometric shadows. A single glowing digital interface is projected onto the wall. The style is ultra-modern, high-end editorial, with a monochromatic palette of black, charcoal, and bright white. The mood is serene, authoritative, and sophisticated, reflecting pioneering digital precision." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAxbGAHA4UWsj0oHbBDAVCsfuzwSbiFaj0BzEgyryk0R3X9PR8yk4_Ob9wSjVa2LJmVC96v9zC_fm8Qu64tgHW8l90Sh6aFnoptbD4o9f389OFiRdj75afuNIpGL82CHw9QhIWTC4DsYQr14LCjIv6wQ19qv-ekaNVyQonQufW1WIiu9MUWExG_ua3oJuE7FgircIzE6VXe6GdlweRNNs4HBYsLDr31XzXRUeQ1XTx-JfMbp0Eh3aoA"/>
+<div class="absolute top-lg left-lg bg-black/60 backdrop-blur px-md py-xs border border-white/20 font-label-sm text-label-sm">CASE 001 / PROJECT VOID</div>
+<div class="absolute inset-0 flex items-end p-xl bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+<div>
+<h4 class="text-headline-md font-headline-md mb-sm">Spatial Intelligence Architecture</h4>
+<p class="text-body-md font-body-md text-on-surface-variant max-w-md">Integrating generative systems into physical environments. / 将生成式系统融入物理环境。</p>
+</div>
+</div>
+</div>
+<!-- Side Item 1 -->
+<div class="md:col-span-2 md:row-span-1 reveal border border-outline-variant relative group overflow-hidden" style="transition-delay: 150ms;">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" data-alt="Close-up of a high-end mechanical watch movement or intricate micro-machinery, rendered in a high-contrast black and white style. The details are razor-sharp, emphasizing precision and engineering excellence. The aesthetic is technical and futuristic, reflecting the brand's 'Approach' of structural integrity and clear boundaries. No colors, just tonal layering of greys." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAaEdy-YpHLZjXb7XFY_CEZTnU3v0xHOV9OcY2uxWp6kgoC9nCJXvuwtrm3bkkwZEiY_5QlzVHFMdUFltIZRJ23n_K760VmnmIak7Ug2sAKsGgYazENpwVzkbG2GRQkkjmX41WH6cTt8idfO_BhCxAC-snye52bn2iHbQsBnsMbM8RCP61SzyOJQu726RZU5WD9gLAAzIlcnrA3dWZFOWSwapVJP49wfqQQZzlnw5cP1HA5bY9jaLlP"/>
+<div class="absolute inset-0 bg-black/40 group-hover:bg-black/20 transition-all"></div>
+<div class="absolute bottom-lg left-lg">
+<h4 class="text-headline-md font-headline-md">Methodology / 方法论</h4>
+<span class="font-bilingual-subtext text-bilingual-subtext text-outline italic">Precision in every pixel.</span>
+</div>
+</div>
+<!-- Side Item 2 -->
+<div class="md:col-span-1 md:row-span-1 reveal border border-outline-variant relative group overflow-hidden" style="transition-delay: 300ms;">
+<img class="w-full h-full object-cover grayscale" data-alt="An abstract black and white pattern resembling ripples in sand or dark liquid, captured with dramatic side-lighting to highlight textures. The style is neo-minimalist and calm. High contrast between the deep shadows and the bright peaks. This image serves as a textural background element for the editorial layout, emphasizing rhythmic density." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBu8l7J34tfLUlRoneXIliRpm1PL8llk6cAIKWnBS-AN1Mxgw3qsjFHYsbZvZbgMXd5cdKijfn18SlsTzjt2Phn0ygMv0Gyz_idO8QtLwYDIRJW58N59QpoLiuz3q0wwh3DYCbzNEAk-XsuxapAeLtXNYoohwOMYX22aYUHtyuPuHautnHiYf0XN-kduhoscaDbBEdtTaSb2D_0DSL5vF4Im_zEFeMSNWhWh5k-q50j96yZefgByK0X"/>
+<div class="absolute inset-0 flex items-center justify-center p-md text-center glass-panel opacity-0 group-hover:opacity-100 transition-opacity">
+<span class="font-label-sm text-label-sm uppercase tracking-widest">Global Outreach / 全球视野</span>
+</div>
+</div>
+<!-- Side Item 3 -->
+<div class="md:col-span-1 md:row-span-1 reveal border border-outline-variant relative bg-background flex flex-col items-center justify-center p-xl group hover:bg-surface-variant transition-colors" style="transition-delay: 450ms;">
+<span class="material-symbols-outlined text-display-xl mb-md group-hover:rotate-12 transition-transform">all_inclusive</span>
+<span class="font-label-sm text-label-sm text-center uppercase tracking-widest">Innovation Labs<br/>创新实验室</span>
+</div>
+</div>
+</section>
+<!-- CTA BANNER -->
+<section class="py-xl bg-primary text-on-primary">
+<div class="max-w-[1440px] mx-auto px-margin-desktop flex flex-col md:flex-row justify-between items-center gap-lg">
+<h2 class="font-display-xl text-headline-lg md:text-display-xl leading-none">Ready to build? / 准备就绪？</h2>
+<button class="border-2 border-on-primary px-xl py-md font-label-sm text-label-sm tracking-widest uppercase hover:bg-on-primary hover:text-primary transition-all active:scale-95 flex items-center gap-sm">
+                Initiate Contact / 发起联系
+                <span class="material-symbols-outlined">north_east</span>
+</button>
+</div>
+</section>
+<!-- FOOTER -->
+<footer class="bg-background border-t border-outline-variant">
+<div class="max-w-[1440px] mx-auto px-margin-desktop py-xl">
+<div class="grid grid-cols-1 md:grid-cols-4 gap-xl mb-xl">
+<div class="md:col-span-1">
+<div class="font-headline-md text-headline-md text-primary font-bold mb-md">Livre et Feu</div>
+<p class="font-bilingual-subtext text-bilingual-subtext text-on-surface-variant max-w-xs">
+                        Refining the intersection of intellect and innovation through precision design.
+                        通过精密设计提炼智慧与创新的交汇。
+                    </p>
+</div>
+<div class="flex flex-col gap-sm">
+<span class="font-label-sm text-label-sm text-primary uppercase mb-xs">Navigation / 导航</span>
+<a class="font-bilingual-subtext text-bilingual-subtext text-on-surface-variant hover:text-primary transition-colors" href="#">Philosophy / 哲学</a>
+<a class="font-bilingual-subtext text-bilingual-subtext text-on-surface-variant hover:text-primary transition-colors" href="#">Approach / 方法</a>
+<a class="font-bilingual-subtext text-bilingual-subtext text-on-surface-variant hover:text-primary transition-colors" href="#">Services / 服务</a>
+</div>
+<div class="flex flex-col gap-sm">
+<span class="font-label-sm text-label-sm text-primary uppercase mb-xs">Connect / 社交</span>
+<a class="font-bilingual-subtext text-bilingual-subtext text-on-surface-variant hover:text-primary transition-colors" href="#">LinkedIn</a>
+<a class="font-bilingual-subtext text-bilingual-subtext text-on-surface-variant hover:text-primary transition-colors" href="#">Instagram</a>
+<a class="font-bilingual-subtext text-bilingual-subtext text-on-surface-variant hover:text-primary transition-colors" href="#">WeChat / 微信</a>
+</div>
+<div class="flex flex-col gap-sm">
+<span class="font-label-sm text-label-sm text-primary uppercase mb-xs">Location / 位置</span>
+<span class="font-bilingual-subtext text-bilingual-subtext text-on-surface-variant">24 Quai de la Tournelle, 75005 Paris</span>
+<span class="font-bilingual-subtext text-bilingual-subtext text-on-surface-variant">Jing'an District, Shanghai</span>
+</div>
+</div>
+<div class="flex flex-col md:flex-row justify-between items-center w-full gap-md pt-lg border-t border-outline-variant/30">
+<p class="font-bilingual-subtext text-bilingual-subtext text-outline">
+                    © 2024 Livre et Feu. All rights reserved. 版权所有
+                </p>
+<div class="flex gap-lg">
+<a class="font-bilingual-subtext text-bilingual-subtext text-outline hover:text-primary transition-colors underline decoration-outline-variant" href="#">Privacy 隐私</a>
+<a class="font-bilingual-subtext text-bilingual-subtext text-outline hover:text-primary transition-colors underline decoration-outline-variant" href="#">Terms 条款</a>
+<a class="font-bilingual-subtext text-bilingual-subtext text-outline hover:text-primary transition-colors underline decoration-outline-variant" href="#">Credits 鸣谢</a>
+</div>
+</div>
+</div>
+</footer>
+<script>
+        // Intersection Observer for scroll animations
+        const revealElements = document.querySelectorAll('.reveal');
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -100px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                }
+            });
+        }, observerOptions);
+
+        revealElements.forEach(el => observer.observe(el));
+
+        // Hover effect for grid items
+        const gridItems = document.querySelectorAll('.group');
+        gridItems.forEach(item => {
+            item.addEventListener('mouseenter', () => {
+                // Future micro-interaction hook
+            });
+        });
+
+        // Simple smooth scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+</body></html>
